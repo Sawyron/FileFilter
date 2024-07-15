@@ -62,15 +62,9 @@ public class Main {
 
     private static void handleExpedition(Exception e) {
         switch (e) {
-            case FileNotFoundException fnf -> {
-                System.out.println("Could not find file " + fnf.getMessage());
-            }
-            case IOException io -> {
-                System.out.println(io.getMessage());
-            }
-            case Exception ex -> {
-                System.out.println("An exception occurred: " + ex.getMessage());
-            }
+            case FileNotFoundException fnf -> System.out.println("Could not find file " + fnf.getMessage());
+            case IOException io -> System.out.println(io.getMessage());
+            case Exception ex -> System.out.println("An exception occurred: " + ex.getMessage());
         }
     }
 }
