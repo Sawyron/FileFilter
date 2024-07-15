@@ -37,7 +37,7 @@ class ContainerFactoriesTest {
     @Test
     void testIntParsing() {
         String token = "123";
-        ValueContainer<BigInteger> container = ContainerFactories.getLongContainer();
+        ValueContainer<BigInteger> container = ContainerFactories.getIntegerContainer();
         assertTrue(container.canParse(token));
         assertDoesNotThrow(() -> container.add(token));
         assertEquals(1, container.getSize());
@@ -46,7 +46,7 @@ class ContainerFactoriesTest {
     @Test
     void testBigIntParsing() {
         String token = "1234567890123456789";
-        ValueContainer<BigInteger> container = ContainerFactories.getLongContainer();
+        ValueContainer<BigInteger> container = ContainerFactories.getIntegerContainer();
         assertTrue(container.canParse(token));
         assertDoesNotThrow(() -> container.add(token));
         assertEquals(1, container.getSize());

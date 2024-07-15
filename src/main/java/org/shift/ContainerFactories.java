@@ -16,7 +16,7 @@ public class ContainerFactories {
                 Double::valueOf);
     }
 
-    public static ValueContainer<BigInteger> getLongContainer() {
+    public static ValueContainer<BigInteger> getIntegerContainer() {
         return new ValueContainer<>(
                 token -> {
                     try {

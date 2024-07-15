@@ -18,7 +18,12 @@ public class ValueWriter<T> {
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out));
         for (String token : tokens) {
             writer.write(token);
+            writer.newLine();
         }
         writer.flush();
+    }
+
+    public boolean isEmpty() {
+        return container.getSize() == 0;
     }
 }
