@@ -5,14 +5,15 @@ import org.shift.stats.models.StringStats;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class StringStatsMapperTest {
-  @Test
+    @Test
     void testApply() {
-      var mapper = new StringStatsMapper();
-      List<String> values = List.of("abc", "example", "test");
-      StringStats stats = mapper.apply(values);
-      assertEquals("abc", stats.shortest());
-      assertEquals("example", stats.longest());
-  }
+        var mapper = new StringStatsMapper();
+        List<String> values = List.of("abc", "example", "test");
+        StringStats stats = mapper.apply(values);
+        assertEquals("abc", stats.shortest());
+        assertEquals("example", stats.longest());
+    }
 }

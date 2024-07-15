@@ -8,11 +8,8 @@ import org.shift.stats.models.FloatStats;
 import org.shift.stats.models.IntegerStats;
 import org.shift.stats.models.StringStats;
 
-import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.math.MathContext;
 import java.math.RoundingMode;
-import java.util.Comparator;
 
 public class StatsPrinterFactories {
     public static StatsPrinter<String> createStringPrinter(ValueContainer<String> container) {

@@ -5,7 +5,7 @@ import org.shift.stats.models.FloatStats;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FloatStatsMapperTest {
     @Test

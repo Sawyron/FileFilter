@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StatsService {
-    private record PrinterEntry(StatsPrinter<?> printer, String name) {}
+    private record PrinterEntry(StatsPrinter<?> printer, String name) {
+    }
 
     private final List<PrinterEntry> entries = new ArrayList<>();
 

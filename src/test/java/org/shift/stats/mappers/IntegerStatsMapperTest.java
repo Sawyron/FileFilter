@@ -9,7 +9,7 @@ import java.math.MathContext;
 import java.math.RoundingMode;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class IntegerStatsMapperTest {
     @Test

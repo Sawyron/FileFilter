@@ -6,7 +6,7 @@ import java.io.ByteArrayInputStream;
 import java.math.BigInteger;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ValueSorterTest {
     @Test
