@@ -1,6 +1,9 @@
 package org.shift;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.util.List;
 
 public class ValueWriter<T> {
