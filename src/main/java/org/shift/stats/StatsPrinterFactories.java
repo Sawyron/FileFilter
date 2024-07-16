@@ -13,11 +13,11 @@ import java.math.RoundingMode;
 
 public class StatsPrinterFactories {
     public static StatsPrinter<String> createStringPrinter(ValueContainer<String> container) {
+        var mapper = new StringStatsMapper();
         return new StatsPrinter<>(
                 container,
                 list -> {
                     var sb = new StringBuilder();
-                    var mapper = new StringStatsMapper();
                     StringStats stats = mapper.apply(list);
                     sb.append("Longest: ").append(stats.longest());
                     sb.append(System.lineSeparator());
@@ -29,11 +29,11 @@ public class StatsPrinterFactories {
     }
 
     public static StatsPrinter<BigInteger> createIntPrinter(ValueContainer<BigInteger> container) {
+        var mapper = new IntegerStatsMapper();
         return new StatsPrinter<>(
                 container,
                 list -> {
                     var sb = new StringBuilder();
-                    var mapper = new IntegerStatsMapper();
                     IntegerStats stats = mapper.apply(list);
                     sb.append("Max: ").append(stats.max());
                     sb.append(System.lineSeparator());
@@ -48,11 +48,11 @@ public class StatsPrinterFactories {
     }
 
     public static StatsPrinter<Double> createDoublePrinter(ValueContainer<Double> container) {
+        var mapper = new FloatStatsMapper();
         return new StatsPrinter<>(
                 container,
                 list -> {
                     var sb = new StringBuilder();
-                    var mapper = new FloatStatsMapper();
                     String format = "%.3f";
                     FloatStats stats = mapper.apply(list);
                     sb.append("Max: ").append(String.format(format, stats.max()));
