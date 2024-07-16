@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ValueSorterTest {
     @Test
-    void testSort() {
+    void whenConfigured_thenSortCorrectly() {
         ValueContainer<Double> floatValueContainer = ContainerFactories.getDoubleContainer();
         ValueContainer<BigInteger> integerValueContainer = ContainerFactories.getIntegerContainer();
         ValueContainer<String> stringValueContainer = ContainerFactories.getStringContainer();

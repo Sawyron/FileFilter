@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class StringStatsMapperTest {
     @Test
-    void testApply() {
+    void whenCommonCase_thenMapCorrectly() {
         var mapper = new StringStatsMapper();
         List<String> values = List.of("abc", "example", "test");
         StringStats stats = mapper.apply(values);

@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ContainerFactoriesTest {
     @Test
-    void testDoubleScientificParsing() {
+    void whenFloatInScientificNotation_thenAcceptIt() {
         String token = "1.528535047E-25";
         ValueContainer<Double> container = ContainerFactories.getDoubleContainer();
         assertTrue(container.canParse(token));
@@ -17,7 +17,7 @@ class ContainerFactoriesTest {
     }
 
     @Test
-    void testDoubleParsing() {
+    void whenFloatInCommonNotation_thenParseIt() {
         String token = "3.1415";
         ValueContainer<Double> container = ContainerFactories.getDoubleContainer();
         assertTrue(container.canParse(token));
@@ -26,7 +26,7 @@ class ContainerFactoriesTest {
     }
 
     @Test
-    void testInvalidDoubleParsing() {
+    void whenFloatInIncorrectForm_thenDoNotAcceptIt() {
         String token = "1.528535047-25";
         ValueContainer<Double> container = ContainerFactories.getDoubleContainer();
         assertFalse(container.canParse(token));
@@ -35,7 +35,7 @@ class ContainerFactoriesTest {
     }
 
     @Test
-    void testIntParsing() {
+    void whenIntInCommonNotation_thenAcceptIt() {
         String token = "123";
         ValueContainer<BigInteger> container = ContainerFactories.getIntegerContainer();
         assertTrue(container.canParse(token));
@@ -44,7 +44,7 @@ class ContainerFactoriesTest {
     }
 
     @Test
-    void testBigIntParsing() {
+    void whenIntIsBig_thenDoNotThrowException() {
         String token = "1234567890123456789";
         ValueContainer<BigInteger> container = ContainerFactories.getIntegerContainer();
         assertTrue(container.canParse(token));

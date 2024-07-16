@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FloatStatsMapperTest {
     @Test
-    void testApply() {
+    void whenCommonCase_thenMapCorrectly() {
         var mapper = new FloatStatsMapper();
         List<Double> values = List.of(1.0, 2.0, 3.0);
         FloatStats stats = mapper.apply(values);

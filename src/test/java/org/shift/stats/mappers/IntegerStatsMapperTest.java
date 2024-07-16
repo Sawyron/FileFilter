@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class IntegerStatsMapperTest {
     @Test
-    void testApply() {
+    void whenCommonCase_thenMapCorrectly() {
         IntegerStatsMapper mapper = new IntegerStatsMapper();
         List<BigInteger> values = List.of(
                 BigInteger.valueOf(1),
@@ -28,7 +28,7 @@ class IntegerStatsMapperTest {
     }
 
     @Test
-    void testApplyWithBigNumbers() {
+    void whenBigIntegersPresent_thenDoNotThrowException() {
         IntegerStatsMapper mapper = new IntegerStatsMapper();
         List<BigInteger> values = List.of(
                 new BigInteger("1234567890123456789"),

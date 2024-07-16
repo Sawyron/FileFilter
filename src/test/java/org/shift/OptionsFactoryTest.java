@@ -21,7 +21,7 @@ class OptionsFactoryTest {
     }
 
     @Test
-    void testProvideOptions() {
+    void whenAllArgsArePassed_thenGetTheirValuesInOptions() {
         Options options = optionsFactory.provideOptions();
         String command = "-p pre -a -s -f in1.txt in2.txt";
         try {
@@ -41,7 +41,7 @@ class OptionsFactoryTest {
     }
 
     @Test
-    void testOutputOption() {
+    void whenOutputOptionsIsPassed_thenParseItAsPath() {
         Options options = optionsFactory.provideOptions();
         String command = "-o ./res";
         try {
