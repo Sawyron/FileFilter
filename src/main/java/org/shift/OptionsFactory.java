@@ -28,11 +28,15 @@ public class OptionsFactory {
         Option fullStats = Option.builder("f")
                 .longOpt("full")
                 .build();
+        Option help = Option.builder("h")
+                .longOpt("help")
+                .build();
         options.addOption(prefix);
         options.addOption(output);
         options.addOption(append);
         options.addOption(simpleStats);
         options.addOption(fullStats);
+        options.addOption(help);
         return options;
     }
 }

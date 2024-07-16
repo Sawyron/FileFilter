@@ -8,13 +8,13 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileService {
+public class FileWriteService {
     private record WriterEntry(ValueWriter<?> writer, String name) {
     }
 
     private final String prefix;
 
-    public FileService(String prefix, Path folder, boolean append) {
+    public FileWriteService(String prefix, Path folder, boolean append) {
         this.prefix = prefix;
         this.folder = folder;
         this.append = append;

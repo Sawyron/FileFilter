@@ -1,7 +1,8 @@
 package org.shift;
 
 import org.apache.commons.cli.*;
-import org.shift.services.FileService;
+import org.shift.services.FileProcessService;
+import org.shift.services.FileWriteService;
 import org.shift.services.StatsService;
 import org.shift.stats.StatsPrinterFactories;
 
@@ -19,35 +20,33 @@ public class Main {
     public static void main(String[] args) {
         var app = new OptionsFactory();
         Options options = app.provideOptions();
-        var formatter = new HelpFormatter();
-        formatter.printHelp("filter", options);
         ValueContainer<Double> floatValueContainer = ContainerFactories.getDoubleContainer();
         ValueContainer<BigInteger> integerValueContainer = ContainerFactories.getIntegerContainer();
         ValueContainer<String> stringValueContainer = ContainerFactories.getStringContainer();
         CommandLineParser parser = new DefaultParser();
         try {
             CommandLine line = parser.parse(options, args);
-            if (!line.hasOption("s") ^ line.hasOption("f")) {
-                throw new IllegalStateException("'s' and 'f' options could not present at the same time");
+            if (line.hasOption("h")) {
+                var formatter = new HelpFormatter();
+                formatter.printHelp("filter", options);
             }
             var sorter = new ValueSorter(List.of(integerValueContainer, floatValueContainer, stringValueContainer));
             List<Path> files = line.getArgList().stream()
                     .map(Path::of)
                     .toList();
-            for (Path file : files) {
-                try (var in = new FileInputStream(file.toFile())) {
-                    sorter.sort(in);
-                }
+            var fileProcessor = new FileProcessService(sorter);
+            fileProcessor.processFiles(files);
+            if (line.hasOption("s") || line.hasOption("f")) {
+                var statsService = new StatsService();
+                statsService.addPrinter("Integer", StatsPrinterFactories.createIntPrinter(integerValueContainer));
+                statsService.addPrinter("Float", StatsPrinterFactories.createDoublePrinter(floatValueContainer));
+                statsService.addPrinter("String", StatsPrinterFactories.createStringPrinter(stringValueContainer));
+                statsService.printStats(line.hasOption("f"));
             }
-            var statsService = new StatsService();
-            statsService.addPrinter("Integer", StatsPrinterFactories.createIntPrinter(integerValueContainer));
-            statsService.addPrinter("Float", StatsPrinterFactories.createDoublePrinter(floatValueContainer));
-            statsService.addPrinter("String", StatsPrinterFactories.createStringPrinter(stringValueContainer));
-            statsService.printStats(line.hasOption("f"));
             Path outputFolder = Objects.requireNonNullElse(line.getParsedOptionValue("o"), Paths.get(""));
             Files.createDirectories(outputFolder);
-            var fileService = new FileService(
-                    line.getOptionValue("p"),
+            var fileService = new FileWriteService(
+                    Objects.requireNonNullElse(line.getOptionValue("p"), ""),
                     outputFolder,
                     line.hasOption("a")
             );
