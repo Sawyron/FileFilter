@@ -3,6 +3,7 @@ package org.shift;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -50,5 +51,20 @@ class ContainerFactoriesTest {
         assertTrue(container.canParse(token));
         assertDoesNotThrow(() -> container.add(token));
         assertEquals(1, container.getSize());
+        List<BigInteger> values = container.values().toList();
+        assertEquals(1, values.size());
+        assertEquals(new BigInteger(token), values.getFirst());
+    }
+
+    @Test
+    void whenIntStartsWithZero_thenAcceptIt() {
+        String token = "0123";
+        ValueContainer<BigInteger> container = ContainerFactories.getIntegerContainer();
+        assertTrue(container.canParse(token));
+        assertDoesNotThrow(() -> container.add(token));
+        assertEquals(1, container.getSize());
+        List<BigInteger> values = container.values().toList();
+        assertEquals(1, values.size());
+        assertEquals(BigInteger.valueOf(123), values.getFirst());
     }
 }

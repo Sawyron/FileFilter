@@ -6,7 +6,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.Collection;
 
 public class FileProcessService {
     private final ValueSorter sorter;
@@ -15,7 +14,7 @@ public class FileProcessService {
         this.sorter = sorter;
     }
 
-    public void processFiles(Collection<Path> paths) {
+    public void processFiles(Iterable<Path> paths) {
         for (Path path : paths) {
             try (FileInputStream in = new FileInputStream(path.toFile())) {
                 sorter.sort(in);

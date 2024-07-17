@@ -6,13 +6,13 @@ import java.util.regex.Pattern;
 
 public class ContainerFactories {
     public static ValueContainer<Double> getDoubleContainer() {
-        final String Digits     = "(\\p{Digit}+)";
-        final String HexDigits  = "(\\p{XDigit}+)";
+        final String Digits = "(\\p{Digit}+)";
+        final String HexDigits = "(\\p{XDigit}+)";
         // an exponent is 'e' or 'E' followed by an optionally
         // signed decimal integer.
-        final String Exp        = "[eE][+-]?"+Digits;
-        final String fpRegex    =
-                ("[\\x00-\\x20]*"+  // Optional leading "whitespace"
+        final String Exp = "[eE][+-]?" + Digits;
+        final String fpRegex =
+                ("[\\x00-\\x20]*" +  // Optional leading "whitespace"
                         "[+-]?(" + // Optional sign character
                         "NaN|" +           // "NaN" string
                         "Infinity|" +      // "Infinity" string
@@ -28,10 +28,10 @@ public class ContainerFactories {
                         // The Java Language Specification.
 
                         // Digits ._opt Digits_opt ExponentPart_opt FloatTypeSuffix_opt
-                        "((("+Digits+"(\\.)?("+Digits+"?)("+Exp+")?)|"+
+                        "(((" + Digits + "(\\.)?(" + Digits + "?)(" + Exp + ")?)|" +
 
                         // . Digits ExponentPart_opt FloatTypeSuffix_opt
-                        "(\\.("+Digits+")("+Exp+")?)|"+
+                        "(\\.(" + Digits + ")(" + Exp + ")?)|" +
 
                         // Hexadecimal strings
                         "((" +

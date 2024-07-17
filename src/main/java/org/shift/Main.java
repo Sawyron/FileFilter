@@ -6,7 +6,6 @@ import org.shift.services.FileWriteService;
 import org.shift.services.StatsService;
 import org.shift.stats.StatsPrinterFactories;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.math.BigInteger;
@@ -18,8 +17,8 @@ import java.util.Objects;
 
 public class Main {
     public static void main(String[] args) {
-        var app = new OptionsFactory();
-        Options options = app.provideOptions();
+        var optionsFactory = new OptionsFactory();
+        Options options = optionsFactory.provideOptions();
         ValueContainer<Double> floatValueContainer = ContainerFactories.getDoubleContainer();
         ValueContainer<BigInteger> integerValueContainer = ContainerFactories.getIntegerContainer();
         ValueContainer<String> stringValueContainer = ContainerFactories.getStringContainer();
@@ -31,7 +30,7 @@ public class Main {
                 formatter.printHelp("filter", options);
             }
             var sorter = new ValueSorter(List.of(integerValueContainer, floatValueContainer, stringValueContainer));
-            List<Path> files = line.getArgList().stream()
+            var files = line.getArgList().stream()
                     .map(Path::of)
                     .toList();
             var fileProcessor = new FileProcessService(sorter);

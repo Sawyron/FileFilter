@@ -5,7 +5,7 @@
 - Java 22
 - Maven 3.9.6
 - Apache Commons CLI 1.8.0
-- Junit 5.10.3 
+- Junit 5.10.3
 
 ## Аргументы командной строки
 
