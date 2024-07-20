@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileWriteService {
-    private record WriterEntry(ValueWriter<?> writer, String name) {
+    private record WriterEntry(ValueWriter writer, String name) {
     }
 
     private final String prefix;
@@ -36,7 +36,7 @@ public class FileWriteService {
         }
     }
 
-    public void addWriter(String name, ValueWriter<?> writer) {
+    public void addWriter(String name, ValueWriter writer) {
         entries.add(new WriterEntry(writer, name));
     }
 }

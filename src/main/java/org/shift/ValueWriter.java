@@ -6,10 +6,10 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.List;
 
-public class ValueWriter<T> {
-    private final ValueContainer<T> container;
+public class ValueWriter {
+    private final ValueContainer<?> container;
 
-    public ValueWriter(ValueContainer<T> container) {
+    public ValueWriter(ValueContainer<?> container) {
         this.container = container;
     }
 

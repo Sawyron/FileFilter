@@ -49,9 +49,9 @@ public class Main {
                     outputFolder,
                     line.hasOption("a")
             );
-            fileService.addWriter("integers.txt", new ValueWriter<>(integerValueContainer));
-            fileService.addWriter("floats.txt", new ValueWriter<>(floatValueContainer));
-            fileService.addWriter("strings.txt", new ValueWriter<>(stringValueContainer));
+            fileService.addWriter("integers.txt", new ValueWriter(integerValueContainer));
+            fileService.addWriter("floats.txt", new ValueWriter(floatValueContainer));
+            fileService.addWriter("strings.txt", new ValueWriter(stringValueContainer));
             fileService.write();
         } catch (Exception e) {
             handleExpedition(e);
