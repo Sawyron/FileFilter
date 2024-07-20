@@ -1,7 +1,6 @@
 package org.shift;
 
 import java.math.BigInteger;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ContainerFactories {
@@ -45,23 +44,13 @@ public class ContainerFactories {
                         "[fFdD]?))" +
                         "[\\x00-\\x20]*");// Optional trailing "whitespace"
         Pattern pattern = Pattern.compile(fpRegex);
-        return new ValueContainer<>(
-                token -> {
-                    Matcher matcher = pattern.matcher(token);
-                    return matcher.find() && matcher.group().equals(token);
-                },
-                Double::valueOf);
+        return new ValueContainer<>(new RegexpFilter(pattern), Double::valueOf);
     }
 
     public static ValueContainer<BigInteger> getIntegerContainer() {
         String regex = "^[+-]?[0-9]+$";
         Pattern pattern = Pattern.compile(regex);
-        return new ValueContainer<>(
-                token -> {
-                    Matcher matcher = pattern.matcher(token);
-                    return matcher.find() && matcher.group().equals(token);
-                },
-                BigInteger::new);
+        return new ValueContainer<>(new RegexpFilter(pattern), BigInteger::new);
     }
 
     public static ValueContainer<String> getStringContainer() {
