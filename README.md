@@ -17,6 +17,6 @@
 - -h, --help - печать инструкции
 - Пути файлов входных данных передаются последними агрументами
 
-Для сборки выполнить команду "mvn package", будет создан файл
-для запуска утилиты
-"file-filter-1.0-SNAPSHOT-jar-with-dependencies.jar".
+Для сборки выполнить команду "package" в Maven
+(например, через командную строку или IDE), будет создан jar-файл утилиты 
+"file-filter-1.0-SNAPSHOT-jar-with-dependencies.jar" в папке target.
