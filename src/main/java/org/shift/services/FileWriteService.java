@@ -13,16 +13,15 @@ public class FileWriteService {
     }
 
     private final String prefix;
+    private final Path folder;
+    private final boolean append;
+    private final List<WriterEntry> entries = new ArrayList<>();
 
     public FileWriteService(String prefix, Path folder, boolean append) {
         this.prefix = prefix;
         this.folder = folder;
         this.append = append;
     }
-
-    private final Path folder;
-    private final boolean append;
-    private final List<WriterEntry> entries = new ArrayList<>();
 
     public void write() throws IOException {
         for (WriterEntry entry : entries) {
