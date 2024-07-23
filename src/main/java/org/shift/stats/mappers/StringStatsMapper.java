@@ -7,9 +7,10 @@ import java.util.List;
 import java.util.function.Function;
 
 public class StringStatsMapper implements Function<List<String>, StringStats> {
+    private final Comparator<String> lengthComparator = Comparator.comparing(String::length);
+
     @Override
     public StringStats apply(List<String> strings) {
-        Comparator<String> lengthComparator = Comparator.comparing(String::length);
         String longest = strings.stream()
                 .max(lengthComparator)
                 .orElse("");
