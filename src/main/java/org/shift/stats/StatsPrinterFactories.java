@@ -57,7 +57,7 @@ public class StatsPrinterFactories {
                     FloatStats stats = mapper.apply(list);
                     sb.append("Max: ").append(String.format(format, stats.max()));
                     sb.append(System.lineSeparator());
-                    sb.append("Min: ").append(String.format(format, stats.max()));
+                    sb.append("Min: ").append(String.format(format, stats.min()));
                     sb.append(System.lineSeparator());
                     sb.append("Sum: ").append(String.format(format, stats.sum()));
                     sb.append(System.lineSeparator());
