@@ -2,7 +2,7 @@
 
 ## Используемые технологии
 
-- Java 22
+- Java 21
 - Maven 3.9.6
 - Apache Commons CLI 1.8.0
 - Junit 5.10.3

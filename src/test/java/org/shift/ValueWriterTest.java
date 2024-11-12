@@ -10,7 +10,7 @@ class ValueWriterTest {
 
     @Test
     void whenGetNonEmptyContainer_thenWriteValuesOnSeparateLines() {
-        ValueContainer<String> container = new ValueContainer<>(_ -> true, token -> token);
+        ValueContainer<String> container = new ValueContainer<>(t -> true, token -> token);
         container.add("one");
         container.add("two");
         container.add("three");
@@ -26,7 +26,7 @@ class ValueWriterTest {
 
     @Test
     void whenContainerHasNoElements_thenIsEmptyTrue() {
-        ValueContainer<String> container = new ValueContainer<>(_ -> true, token -> token);
+        ValueContainer<String> container = new ValueContainer<>(t -> true, token -> token);
         var writer = new ValueWriter(container);
         assertTrue(writer.isEmpty());
     }

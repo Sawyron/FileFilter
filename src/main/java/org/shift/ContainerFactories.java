@@ -54,6 +54,6 @@ public class ContainerFactories {
     }
 
     public static ValueContainer<String> getStringContainer() {
-        return new ValueContainer<>(_ -> true, token -> token);
+        return new ValueContainer<>(t -> true, token -> token);
     }
 }
